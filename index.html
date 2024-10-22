@@ -94,7 +94,7 @@
     let time = 0;
     const minDistance = 18; 
 
-    // 캔버스 크기 설정
+    
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight - document.getElementById('toolbox').offsetHeight;
@@ -103,10 +103,10 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // 음악 재생
+    
     document.addEventListener('click', () => {
-      audioPlayer.play(); // 사용자가 페이지를 클릭하면 음악이 재생됨
-    }, { once: true }); // 첫 클릭만 실행되도록 설정
+      audioPlayer.play(); 
+    }, { once: true }); 
 
     canvas.addEventListener('mousedown', () => {
       drawing = true;
