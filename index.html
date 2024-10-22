@@ -79,18 +79,22 @@
     <button id="clearCanvas">다시 떠올리기</button>
   </div>
 
+  <audio id="audioPlayer" src="find.mp3"></audio>
+
   <script>
     const canvas = document.getElementById('drawingCanvas');
     const ctx = canvas.getContext('2d');
     const textInput = document.getElementById('textInput');
     const colorInput = document.getElementById('colorInput');
     const clearCanvasButton = document.getElementById('clearCanvas');
+    const audioPlayer = document.getElementById('audioPlayer');
     let drawing = false;
     let lastPoint = null;
     let textIndex = 0;
     let time = 0;
     const minDistance = 18; 
 
+    // 캔버스 크기 설정
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight - document.getElementById('toolbox').offsetHeight;
@@ -98,6 +102,11 @@
 
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
+
+    // 음악 재생
+    document.addEventListener('click', () => {
+      audioPlayer.play(); // 사용자가 페이지를 클릭하면 음악이 재생됨
+    }, { once: true }); // 첫 클릭만 실행되도록 설정
 
     canvas.addEventListener('mousedown', () => {
       drawing = true;
@@ -142,13 +151,12 @@
       return Math.sqrt(dx * dx + dy * dy);
     }
 
-   
     clearCanvasButton.addEventListener('click', () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       lastPoint = null;
       textIndex = 0;
       time = 0;
     });
-</script>
+  </script>
 </body>
 </html>
